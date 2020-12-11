@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="jquery-3.5.1.min.js"></script>
+    <script src="client.js"></script>
+    <title>jQuery</title>
+</head>
+<h1>Salary Calculator</h1>
+<h1>Employee Data</h1>
+
+<body>
+    <div>
+        <h3>Add Employee</h3>
+        <input id="last" placeholder="Last">
+        <label for="last"></label>
+        <input id="first" placeholder="First">
+        <label for="first"></label>
+        <input id="ID" placeholder="ID">
+        <label for="ID"></label>
+        <input id="jobTitle" placeholder="Job Title">
+        <label for="jobTitle"></label>
+        <input id="annualSalary" placeholder="Annual Salary">
+        <label for="annualSalary"></label>
+        <button id="addEmployee">Add Employee</button>
+    </div>
+    <h2>Employees</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+            <tr>
+                <th>Last Name</th>
+                <th>First Name</th>
+                <th>ID</th>
+                <th>Job Title</th>
+                <th>Annual Salary</th>
+            </tr>
+        </thead>
+        <tbody id="employeeData">
+        </tbody>
+    </table>
+
+</body>
+
+</html>
