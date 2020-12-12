@@ -31,8 +31,9 @@ function addInfo() {
      <td>${employee.ID}</td>
      <td>${employee.title}</td>
      <td>${employee.salary}</td>
-
+     <td><button>DELETE</button></td>
      </tr>`)
+    //  <button>${DELETE}</button>
     }
    
 }
@@ -73,5 +74,3 @@ function emptyFields(){
 
 
 }
-
-
