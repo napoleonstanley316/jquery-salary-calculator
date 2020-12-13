@@ -4,13 +4,15 @@ let employeeInfo = [];
 let salaries = [];
 
 
-
+// consoleLoaded is a callback function
 $(document).ready(consoleLoaded);
 
 
 function consoleLoaded() {
 
     console.log('jquery is ready');
+
+    // click listeners
     $('#addEmployee').on('click', handleClick);
     addInfo();
     $('#employeeData').on('click', '#deleteButton', deleteEmployee)
@@ -34,13 +36,12 @@ function addInfo() {
      <td>${employee.ID}</td>
      <td>${employee.title}</td>
      <td id="salary">${employee.salary}</td>
-     <td><button id="deleteButton">DELETE</button></td>
+     <td><button id="deleteButton" class="btn btn-danger">DELETE</button></td>
      </tr>`)
     }
 
 
     $('#deleteButton').on('click', deleteEmployee);
-   
 
 }
 
@@ -52,72 +53,62 @@ function addSalaries() {
 
         totalSalary += parseFloat(info.salary)
 
-           
-    }
 
+    }
    
-    $('#totalField').append(`${totalSalary}`);
-    console.log(totalSalary);
-    
-
-}
 
 
-function handleClick() {
-    console.log('clicked');
+        $('#totalField').append(`${totalSalary}`)
+        console.log(totalSalary);
 
-    let newInfo = {
-        last: $('#last').val(),
-        first: $('#first').val(),
-        ID: $('#ID').val(),
-        title: $('#jobTitle').val(),
-        salary: $('#annualSalary').val(),
 
     }
-    console.log(newInfo); // should be the newInfo object on the console
-    employeeInfo.push(newInfo);
-
-    console.log(employeeInfo);
-
-    $('#totalField').empty();
-
-    addInfo();
-
-    addSalaries();
-
-    sumOfSalary();
-
-    emptyFields();
-
-}
 
 
-function deleteEmployee() {
+    function handleClick() {
+        console.log('clicked');
+// declares object that takes values from html input fields (field that are being typed in)
+        let newInfo = {
+            last: $('#last').val(),
+            first: $('#first').val(),
+            ID: $('#ID').val(),
+            title: $('#jobTitle').val(),
+            salary: $('#annualSalary').val(),
 
-    console.log('delete button function works!');
-    $(this).parent().parent().remove();
+        }
+        console.log(newInfo); // should be the newInfo object on the console
+        employeeInfo.push(newInfo);
 
-}
+        console.log(employeeInfo);
+
+        $('#totalField').empty();
+
+        addInfo();
+
+        addSalaries();
+
+        emptyFields();
+
+    }
+
+// when the delete button is clicked, this function delete the parent of the parent of the delete button (row: newInfo)
+    function deleteEmployee() {
+
+        console.log('delete button function works!');
+        $(this).parent().parent().remove();
+
+        emptyFields();
+
+    }
 
 
-function sumOfSalary(){
-
-console.log('sumOfSalary works!');
-
-
-
-}
-
+    function emptyFields() {
+        $('#last').val('');
+        $('#first').val('');
+        $('#ID').val('');
+        $('#jobTitle').val('');
+        $('#annualSalary').val('');
 
 
-
-function emptyFields() {
-    $('#last').val('');
-    $('#first').val('');
-    $('#ID').val('');
-    $('#jobTitle').val('');
-    $('#annualSalary').val('');
-
-
-}
+    }
 
