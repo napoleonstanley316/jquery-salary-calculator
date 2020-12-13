@@ -40,6 +40,7 @@ function addInfo() {
 
 
     $('#deleteButton').on('click', deleteEmployee);
+   
 
 }
 
@@ -51,11 +52,11 @@ function addSalaries() {
 
         totalSalary += parseFloat(info.salary)
 
-        $('#salarySum').append(totalSalary)
-
+           
     }
 
    
+    $('#totalField').append(`${totalSalary}`);
     console.log(totalSalary);
     
 
@@ -77,6 +78,8 @@ function handleClick() {
     employeeInfo.push(newInfo);
 
     console.log(employeeInfo);
+
+    $('#totalField').empty();
 
     addInfo();
 
@@ -104,6 +107,9 @@ console.log('sumOfSalary works!');
 
 
 }
+
+
+
 
 function emptyFields() {
     $('#last').val('');
