@@ -1,7 +1,7 @@
 console.log('js loaded!');
 
 let employeeInfo = [];
-let salaries = [];
+// let salaries = [];
 
 
 // consoleLoaded is a callback function
@@ -51,64 +51,69 @@ function addSalaries() {
 
     for (let info of employeeInfo) {
 
-        totalSalary += parseFloat(info.salary)
-
-
-    }
-   
-
-
-        $('#totalField').append(`${totalSalary}`)
-        console.log(totalSalary);
-
+        totalSalary += Math.round(info.salary)
 
     }
 
 
-    function handleClick() {
-        console.log('clicked');
-// declares object that takes values from html input fields (field that are being typed in)
-        let newInfo = {
-            last: $('#last').val(),
-            first: $('#first').val(),
-            ID: $('#ID').val(),
-            title: $('#jobTitle').val(),
-            salary: $('#annualSalary').val(),
+    let monthlyCost = Math.round(totalSalary) / 12;
+    let totalMonthly = Math.round(monthlyCost)
 
-        }
-        console.log(newInfo); // should be the newInfo object on the console
-        employeeInfo.push(newInfo);
+    $('#totalField').text(`${totalMonthly}`)
+    console.log(monthlyCost);
 
-        console.log(employeeInfo);
+    if (totalMonthly > 20000) {
 
-        $('#totalField').empty();
+        $('#totalField').addClass('overBudget');
+    }
+}
 
-        addInfo();
 
-        addSalaries();
-
-        emptyFields();
+function handleClick() {
+    console.log('clicked');
+    // declares object that takes values from html input fields (field that are being typed in)
+    let newInfo = {
+        last: $('#last').val(),
+        first: $('#first').val(),
+        ID: $('#ID').val(),
+        title: $('#jobTitle').val(),
+        salary: $('#annualSalary').val(),
 
     }
+    console.log(newInfo); // should be the newInfo object on the console
+    employeeInfo.push(newInfo);
+
+    console.log(employeeInfo);
+
+    // $('#totalField').empty();
+
+    addInfo();
+
+    addSalaries();
+
+    emptyFields();
+
+}
 
 // when the delete button is clicked, this function delete the parent of the parent of the delete button (row: newInfo)
-    function deleteEmployee() {
+function deleteEmployee() {
 
-        console.log('delete button function works!');
-        $(this).parent().parent().remove();
+    console.log('delete button function works!');
+    $(this).parent().parent().remove();
 
-        emptyFields();
+    emptyFields();
 
-    }
-
-
-    function emptyFields() {
-        $('#last').val('');
-        $('#first').val('');
-        $('#ID').val('');
-        $('#jobTitle').val('');
-        $('#annualSalary').val('');
+}
 
 
-    }
+function emptyFields() {
+    $('#last').val('');
+    $('#first').val('');
+    $('#ID').val('');
+    $('#jobTitle').val('');
+    $('#annualSalary').val('');
+
+
+
+}
 
